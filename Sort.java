@@ -7,8 +7,8 @@ public class Sort
 		int tgtIdx = 0;	//최소(최대) 값의 인덱스
 		
 //		selectionSort(intArr, tgtIdx, tmpVal);	//선택 정렬
-//		bubbleSort(intArr, tmpVal);				//버블 정렬
-		insertionSort(intArr, tmpVal);	//삽입 정렬
+//		bubbleSort(intArr, tmpVal);		//버블 정렬
+		insertionSort(intArr, tmpVal);		//삽입 정렬
 	}
 	
 	//선택 정렬 : 최소(최대) 값을 선택하여 먼저 정렬 처리

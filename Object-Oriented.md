@@ -50,13 +50,13 @@ class Tv
 	//채널변경 기능
 	void channelUp()
 	{
-		this.channel++;
+		++this.channel;
 	}
 	
 	//채널변경 기능
 	void channelDown()
 	{
-		this.channel--;
+		--this.channel;
 	}
 }
 ```
@@ -72,5 +72,58 @@ class Tv
 
 ## 객체의 생성과 사용
 ```java
+public class ObjectCreationAndUsage
+{
+	public static void main(String[] args)
+	{
+		//1) Tv클래스 타입의 참조변수 tv를 선언.
+		//2) 메모리에 참조변수 tv를 위한 공간이 마련됨.
+		//아직 인스턴스가 생성되지 않았으므로 이 참조변수로 할 수 있는 것은 아무것도 없음.
+		Tv tv;
+		
+		//1) 연산자 new에 의해 Tv클래스의 인스턴스가 메모리의 빈 공간('0x100'로 가정)에 생성됨.
+		//2) 멤버변수는 각 자료형에 해당하는 기본값으로 초기화 됨.
+		//3) 대입연산자에 의해 생성된 객체의 주소값(0x100)이 참조변수 tv에 저장됨(참조변수 tv에는 '0x100'의 주소값이 저장된 상태).
+		//이제 참조변수 tv로 Tv인스턴스에 접근 가능.
+		//인스턴스를 다루기 위해서는 반드시 참조변수가 필요.
+		tv = new Tv();
+		
+		//참조변수 tv에 저장된 주소에 있는 인ㄴ스턴스의 멤버변수 channel에 7을 저장.
+		tv.channel = 7;
+		
+		//참조변수 tv가 참조하고 있는 Tv인스턴스의 channelDown() 메서드를 호출.
+		tv.channelDown();
+		
+		//참조변수 tv가 참조하고 있는 Tv인스턴스의 멤버변수 channel에 저장되어 있는 값을 출력.
+		System.out.println("현재 채널은 " + tv.channel + " 입니다.");
+	}
 
+}
+
+class Tv
+{
+	String color;	//색상 속성
+	boolean power;	//전원상태 속성
+	int channel;	//채널 속성
+	
+	//전원on/off 기능
+	void power()
+	{
+		this.power = !this.power;
+	}
+	
+	//채널변경 기능
+	void channelUp()
+	{
+		++this.channel;
+	}
+	
+	//채널변경 기능
+	void channelDown()
+	{
+		--this.channel;
+	}
+}
 ```
+- 참조변수 - 인스턴스 : TV리모컨 - TV
+- 인스턴스는 참조변수를 통해서만 다룰 수 있으며, 참조변수의 타입은 인스턴스의 타입과 일치해야 함.

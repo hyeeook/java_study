@@ -312,6 +312,41 @@ class Variables
 이를 코드로 나타내면 개별속성은 인스턴스 변수에, 공통속성은 클래스 변수에 해당함.
 
 ```java
+
+public class Variables
+{
+	public static void main(String[] args)
+	{
+		//클래스 변수는 객체 생성 없이 사용 가능
+		System.out.println("Card.WIDTH : " + Card.WIDTH);	//Card.WIDTH : 100
+		System.out.println("Card.HEIGHT : " + Card.HEIGHT);	//Card.HEIGHT : 250
+		System.out.println();
+		
+		//인스턴스 변수는 객체 생성 후 사용 가능
+		Card card1 = new Card();
+		card1.kind = "Heart";
+		card1.number = 7;
+		
+		Card card2 = new Card();
+		card2.kind = "Spade";
+		card2.number = 3;
+		
+		//한 인스턴스의 클래스 변수를 변경하면 동일한 클래스로 생성된 모든 인스턴스에 대해 변경사항이 적용됨
+		card1.WIDTH = 50;
+		card1.HEIGHT = 100;
+		
+		System.out.println("card1.kind : " + card1.kind);		//card1.kind : Heart
+		System.out.println("card1.number : " + card1.number);	//card1.number : 7
+		System.out.println("card1.WIDTH : " + card1.WIDTH);		//card1.WIDTH : 50
+		System.out.println("card1.HEIGHT : " + card1.HEIGHT);	//card1.HEIGHT : 100
+		System.out.println();
+		System.out.println("card2.kind : " + card2.kind);		//card2.kind : Spade
+		System.out.println("card2.number : " + card2.number);	//card2.number : 3
+		System.out.println("card2.WIDTH : " + card2.WIDTH);		//card2.WIDTH : 50, card1의 WIDTH 값을 변경했으나 card2의 WIDTH 값도 변경됨
+		System.out.println("card2.HEIGHT : " + card2.HEIGHT);	//card2.HEIGHT : 100, card1의 HEIGHT 값을 변경했으나 card2의 HEIGHT 값도 변경됨
+	}
+}
+
 class Card
 {
 	//개별속성

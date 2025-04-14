@@ -371,21 +371,24 @@ public class PrimitiveParameter
 {
 	public static void main(String[] args)
 	{
+		//(1) 새로운 객체 data 생성. data 객체의 주소는 '0x100'으로 가정함.
 		Data data = new Data();
+		
+		//(2) data 객체의 멤버변수 x의 값을 10으로 저장.
 		data.x = 10;
 		System.out.println("main().x = " + data.x);	//main().x = 10
 		
-		//(1) change() 메서드가 호출되면서 'data.x' 값이 change() 메서드의 매개변수 x에 복사됨.
+		//(3) change() 메서드가 호출되면서 'data.x' 값(10)이 change() 메서드의 매개변수 x에 복사됨.
 		change(data.x);
 		
-		//(3) change() 메서드가 종료되면서 매개변수 x는 스택에서 제거됨.
+		//(5) change() 메서드가 종료되면서 매개변수 x는 스택에서 제거됨.
 		System.out.println("After change(data.x)");	//After change(data.x)
 		System.out.println("main().x = " + data.x);	//main().x = 10
 	}
 	
 	static void change(int x)
 	{
-		//(2) change() 메서드에서 x의 값을 1000으로 변경.
+		//(4) change() 메서드에서 x의 값을 1000으로 변경.
 		x = 1000;
 		System.out.println("change().x = " + x);	//change().x = 1000
 	}
@@ -411,21 +414,24 @@ public class ReferenceParameter
 {
 	public static void main(String[] args)
 	{
+		//(1) 새로운 객체 data 생성. data 객체의 주소는 '0x100'으로 가정함.
 		Data data = new Data();
+		
+		//(2) data 객체의 멤버변수 x의 값을 10으로 저장.
 		data.x = 10;
 		System.out.println("main().x = " + data.x);		//main().x = 10
 		
-		//(1) change() 메서드가 호출되면서 참조변수 data의 값(주소)이 매개변수 data에 복사됨에 따라 이제 매개변수 data에 저장된 주소값으로 x에 접근이 가능함.
+		//(3) change() 메서드가 호출되면서 참조변수 data의 값(주소, 0x100)이 매개변수 data에 복사됨에 따라 이제 매개변수 data에 저장된 주소값으로 x에 접근이 가능함.
 		change(data);
 		
-		//(3) change() 메서드가 종료되면서 매개변수 data는 스택에서 제거됨.
+		//(5) change() 메서드가 종료되면서 매개변수 data는 스택에서 제거됨.
 		System.out.println("After change(data)");		//After change(data)
 		System.out.println("main().x = " + data.x);		//main().x = 1000
 	}
 	
 	static void change(Data data)
 	{
-		//(2) change() 메서드에서 매개변수 data로 x의 값을 1000으로 변경.
+		//(4) change() 메서드에서 매개변수 data(주소, 0x100)로 x의 값을 1000으로 변경.
 		data.x = 1000;
 		System.out.println("change().x = " + data.x);	//change().x = 1000
 	}

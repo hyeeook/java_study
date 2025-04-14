@@ -440,3 +440,47 @@ class Data
 기본형 매개변수와 달리, change() 메서드의 매개변수를 참조형으로 선언했기 때문에, x의 값이 아닌 변수 data의 주소가 매개변수 data에 복사됨.
 이제 main() 메서드의 참조변수 data와 change() 메서드의 매개변수 data는 같은 객체를 가리키게 됨.
 그래서 매개변수 data로 x의 값을 읽는 것과 변경하는 것이 모두 가능함.
+
+---
+
+## 참조형 반환타입
+매개변수만이 아니라 반환타입도 참조형이 될 수 있음.
+반환타입이 참조형이라는 것은 반환하는 값의 타입이 참조형이라는 것인데, 모든 참조형 타입의 값은 '객체의 주소'이므로 그저 주소값이 반환되는 것.
+
+```java
+public class ReferenceReturn
+{
+	public static void main(String[] args)
+	{
+		//(1) 새로운 객체 data1 생성. data1 객체의 주소는 '0x100'으로 가정함.
+		Data data1 = new Data();
+		data1.x = 10;
+		
+		//(2) data1 객체의 주소인 '0x100'을 매개변수로 copy() 메서드를 호출.
+		Data data2 = copy(data1);
+		System.out.println("data1.x = " + data1.x);	//data1.x = 10
+		System.out.println("data2.x = " + data2.x);	//data2.x = 10
+	}
+	
+	static Data copy(Data data)
+	{
+		//(3) 새로운 객체 tmp 생성. tmp 객체의 주소는 '0x200'으로 가정함.
+		Data tmp = new Data();
+		
+		//(4) data.x의 값을 tmp.x에 복사
+		tmp.x = data.x;
+		
+		//(5) 복사한 객체의 주소 '0x200'를 반환
+		return tmp;
+	}
+}
+
+class Data
+{
+	int x;
+}
+```
+
+---
+
+## static 메서드와 인스턴스 메서드

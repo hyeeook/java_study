@@ -360,3 +360,47 @@ class Card
 ```
 
 인스턴스 변수는 인스턴스가 생성될 때마다 생성되므로 인스턴스마다 각기 다른 값을 유지할 수 있지만, 클래스 변수는 모든 인스턴스가 하나의 저장공간을 공유하므로, 항상 공통된 값을 갖게 됨. 위 코드에서 Card.WIDTH, card1.WIDTH, card2.WIDTH는 모두 같은 저장공간을 참조하므로 셋 중 무엇을 변경해도 동일한 값을 갖게 됨.
+
+---
+
+## 기본형(primitive type) 매개변수
+변수의 값을 읽기만 가능(read only).
+```java
+public class PrimitiveParameter
+{
+	public static void main(String[] args)
+	{
+		Data data = new Data();
+		data.x = 10;
+		System.out.println("main().x = " + data.x);	//main().x = 10
+		
+		//(1) change() 메서드가 호출되면서 'data.x' 값이 change() 메서드의 매개변수 x에 복사됨.
+		change(data.x);
+		
+		//(3) change() 메서드가 종료되면서 매개변수 x는 스택에서 제거됨.
+		System.out.println("After change(data.x)");	//After change(data.x)
+		System.out.println("main().x = " + data.x);	//main().x = 10
+	}
+	
+	static void change(int x)
+	{
+		//(2) change() 메서드에서 x의 값을 1000으로 변경.
+		x = 1000;
+		System.out.println("change().x = " + x);	//change().x = 1000
+	}
+}
+
+class Data
+{
+	int x;
+}
+```
+
+위 코드에서 'data.x'의 값은 변경된 것이 아니라, change() 메서드의 매개변수 x의 값이 변경된 것.
+원본이 아닌 복사본이 변경된 것이라 원본에는 아무런 영향을 미치지 못함.
+이처럼 기본형 매개변수는 변수에 저장된 값을 읽을 수만 있을 뿐 변경할 수는 없음.
+
+---
+
+## 참조형(reference type) 매개변수
+인스턴스의 주소가 복사되므로 변수의 값을 읽고 변경하기 가능(read & write).

@@ -365,6 +365,7 @@ class Card
 
 ## 기본형(primitive type) 매개변수
 변수의 값을 읽기만 가능(read only).
+
 ```java
 public class PrimitiveParameter
 {
@@ -404,3 +405,38 @@ class Data
 
 ## 참조형(reference type) 매개변수
 인스턴스의 주소가 복사되므로 변수의 값을 읽고 변경하기 가능(read & write).
+
+```java
+public class ReferenceParameter
+{
+	public static void main(String[] args)
+	{
+		Data data = new Data();
+		data.x = 10;
+		System.out.println("main().x = " + data.x);		//main().x = 10
+		
+		//(1) change() 메서드가 호출되면서 참조변수 data의 값(주소)이 매개변수 data에 복사됨에 따라 이제 매개변수 data에 저장된 주소값으로 x에 접근이 가능함.
+		change(data);
+		
+		//(3) change() 메서드가 종료되면서 매개변수 data는 스택에서 제거됨.
+		System.out.println("After change(data)");		//After change(data)
+		System.out.println("main().x = " + data.x);		//main().x = 1000
+	}
+	
+	static void change(Data data)
+	{
+		//(2) change() 메서드에서 매개변수 data로 x의 값을 1000으로 변경.
+		data.x = 1000;
+		System.out.println("change().x = " + data.x);	//change().x = 1000
+	}
+}
+
+class Data
+{
+	int x;
+}
+```
+
+기본형 매개변수와 달리, change() 메서드의 매개변수를 참조형으로 선언했기 때문에, x의 값이 아닌 변수 data의 주소가 매개변수 data에 복사됨.
+이제 main() 메서드의 참조변수 data와 change() 메서드의 매개변수 data는 같은 객체를 가리키게 됨.
+그래서 매개변수 data로 x의 값을 읽는 것과 변경하는 것이 모두 가능함.

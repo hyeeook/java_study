@@ -463,9 +463,9 @@ public class ReferenceReturn
 		data1.x = 10;
 		
 		//(2) copy() 메서드가 호출되면서 참조변수 data1의 값(주소, 0x100)이 매개변수 data에 복사됨에 따라 이제 매개변수 data에 저장된 주소값으로 data1.x에 접근이 가능함.
-		Data data2 = copy(data1);	//반환된 주소값 '0x200'이 참조변수 data2에 저장됨.
+		Data data2 = copy(data1);	//(6) 반환된 주소값 '0x200'이 참조변수 data2에 저장됨.
 		
-		//(6) change() 메서드가 종료되면서 매개변수 data는 스택에서 제거됨.
+		//(7) change() 메서드가 종료되면서 매개변수 data는 스택에서 제거됨.
 		System.out.println("data1.x = " + data1.x);	//data1.x = 10
 		System.out.println("data2.x = " + data2.x);	//data2.x = 10
 	}

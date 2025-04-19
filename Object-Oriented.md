@@ -23,11 +23,11 @@
 ---
 
 ## 객체의 구성요소(멤버) - 속성과 기능
-속성(property)|기능(function)
----|---
-크기, 길이, 높이, 색상, 볼륨, 채널 등|켜기, 끄기, 볼륨 높이기, 볼륨 낮추기, 채널 변경하기 등
-멤버변수(variable)|메서드(method)
-int channel|channelUp() {}
+구분|속성(property)|기능(function)
+---|---|---
+구현방법|멤버변수(variable)|메서드(method)
+구현코드|int channel|channelUp() {}
+예시|크기, 길이, 높이, 색상, 볼륨, 채널 등|켜기, 끄기, 볼륨 높이기, 볼륨 낮추기, 채널 변경하기 등
 
 ```java
 class Tv

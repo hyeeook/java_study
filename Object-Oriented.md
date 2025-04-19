@@ -1,11 +1,11 @@
 # 객체지향 프로그래밍
 ## 객체지향언어의 특징
-1) 코드의 재사용성이 높다.
-   - 새로운 코드를 작성할 때 기존의 코드를 이용하여 쉽게 작성할 수 있다.
-2) 코드의 관리가 용이하다.
-   - 코드간의 관계를 이용해서 적은 노력으로 쉽게 코드를 변경할 수 있다.
-3) 신뢰성이 높은 프로그래밍을 가능하게 한다.
-   - 제어자와 메서드를 이용해서 데이터를 보호하고 올바른 값을 유지하도록 하며, 코드의 중복을 제거하여 코드의 불일치로 인한 오동작을 방지할 수 있다.
+1) 코드의 재사용성이 높음.
+   - 새로운 코드를 작성할 때 기존의 코드를 이용하여 쉽게 작성 가능.
+2) 코드의 관리가 용이.
+   - 코드간의 관계를 이용해서 적은 노력으로 쉽게 코드를 변경 가능.
+3) 신뢰성이 높은 프로그래밍 가능.
+   - 제어자와 메서드를 이용해서 데이터를 보호하고 올바른 값을 유지하도록 하며, 코드의 중복을 제거하여 코드의 불일치로 인한 오동작을 방지.
 
 ---
 
@@ -61,7 +61,7 @@ class Tv
 ## 객체와 인스턴스
 - 인스턴스화(instantiate) : 클래스로부터 객체를 만드는 과정.
 - 인스턴스(instance) : 클래스로부터 만들어진 객체.
-결국 객체와 인스턴스는 같은 의미이지만, 객체는 모든 인스턴스를 대표하는 포괄적인 의미를 갖고 있으며, 인스턴스는 어떤 클래스로부터 만들어진 것인지를 보다 강조하는 의미를 갖고 있다.
+결국 객체와 인스턴스는 같은 의미이지만, 객체는 모든 인스턴스를 대표하는 포괄적인 의미를 갖고 있으며, 인스턴스는 어떤 클래스로부터 만들어진 것인지를 보다 강조하는 의미를 갖음음.
 
 ---
 
@@ -76,9 +76,9 @@ public class ObjectCreationAndUsage
 		//아직 인스턴스가 생성되지 않았으므로 이 참조변수로 할 수 있는 것은 아무것도 없음.
 		Tv tv;
 		
-		//1) 연산자 new에 의해 Tv클래스의 인스턴스가 메모리의 빈 공간('0x100'로 가정)에 생성됨.
-		//2) 멤버변수는 각 자료형에 해당하는 기본값으로 초기화 됨.
-		//3) 대입연산자에 의해 생성된 객체의 주소값(0x100)이 참조변수 tv에 저장됨(참조변수 tv에는 주소값 '0x100'이 저장된 상태).
+		//3) 연산자 new에 의해 Tv클래스의 인스턴스가 메모리의 빈 공간('0x100'로 가정)에 생성됨.
+		//4) 멤버변수는 각 자료형에 해당하는 기본값으로 초기화 됨.
+		//5) 대입연산자에 의해 생성된 객체의 주소값(0x100)이 참조변수 tv에 저장됨(참조변수 tv에는 주소값 '0x100'이 저장된 상태).
 		//이제 참조변수 tv로 Tv인스턴스에 접근 가능.
 		//인스턴스를 다루기 위해서는 반드시 참조변수가 필요.
 		tv = new Tv();
@@ -138,9 +138,9 @@ class Tv
 //아직 인스턴스가 생성되지 않았으므로 이 참조변수로 할 수 있는 것은 아무것도 없음.
 Tv[] tvArr;
 
-//1) 3개의 Tv클래스 인스턴스가 연달아 저장될 공간이 메모리의 빈 공간('0x100'로 가정)에 생성됨.
-//2) 배열의 각 요소는 참조변수의 기본값인 null로 자동 초기화 됨.
-//3) 대입연산자에 의해 생성된 배열의 주소값(0x100)이 참조변수 tvArr에 저장됨(참조변수 tvArr에는 주소값 '0x100'이 저장된 상태).
+//3) 3개의 Tv클래스 인스턴스가 연달아 저장될 공간이 메모리의 빈 공간('0x100'로 가정)에 생성됨.
+//4) 배열의 각 요소는 참조변수의 기본값인 null로 자동 초기화 됨.
+//5) 대입연산자에 의해 생성된 배열의 주소값(0x100)이 참조변수 tvArr에 저장됨(참조변수 tvArr에는 주소값 '0x100'이 저장된 상태).
 //객체를 다루기 위한 참조변수들만 만들어진, 아직 인스턴스가 생성 및 저장되지는 않은 상태.
 //참조변수 tvArr에는 3개의 객체, 정확히는 객체의 주소를 저장할 수 있음.
 //아직 인스턴스가 생성되지 않았으므로 이 참조변수로 할 수 있는 것은 아무것도 없음.
@@ -252,7 +252,7 @@ class Variables
 {
 	//클래스 영역 시작
 	
-	int iv;			//인스턴스 변수
+	int iv;		//인스턴스 변수
 	static int cv;	//클래스 변수
 	
 	void method(int lv1)	//파라미터로 선언된 변수로 지역 변수
@@ -298,13 +298,12 @@ class Variables
 ## 클래스 변수와 인스턴스 변수
 트럼프 카드에는 무늬, 숫자, 폭, 높이와 같은 속성이 존재함.
 
-개별속성|공통속성
----|---
-무늬, 숫자|폭, 높이
-카드마다 다른 값|모든 카드에 동일한 값
-한 카드의 값을 변경하면 변경한 카드에만 적용됨|한 카드의 값을 변경하면 모든 카드에 적용됨
-
-이를 코드로 나타내면 개별속성은 인스턴스 변수에, 공통속성은 클래스 변수에 해당함.
+구분|개별속성|공통속성
+---|---|---
+특징|카드마다 다른 값|모든 카드에 동일한 값
+변경사항 적용 범위|한 카드의 값을 변경하면 변경한 카드에만 적용됨|한 카드의 값을 변경하면 모든 카드에 적용됨
+예시|무늬, 숫자|폭, 높이
+구현방법|인스턴스 변수|클래스 변수
 
 ```java
 
@@ -330,14 +329,14 @@ public class Variables
 		card1.WIDTH = 50;
 		card1.HEIGHT = 100;
 		
-		System.out.println("card1.kind : " + card1.kind);		//card1.kind : Heart
+		System.out.println("card1.kind : " + card1.kind);	//card1.kind : Heart
 		System.out.println("card1.number : " + card1.number);	//card1.number : 7
-		System.out.println("card1.WIDTH : " + card1.WIDTH);		//card1.WIDTH : 50
+		System.out.println("card1.WIDTH : " + card1.WIDTH);	//card1.WIDTH : 50
 		System.out.println("card1.HEIGHT : " + card1.HEIGHT);	//card1.HEIGHT : 100
 		System.out.println();
-		System.out.println("card2.kind : " + card2.kind);		//card2.kind : Spade
+		System.out.println("card2.kind : " + card2.kind);	//card2.kind : Spade
 		System.out.println("card2.number : " + card2.number);	//card2.number : 3
-		System.out.println("card2.WIDTH : " + card2.WIDTH);		//card2.WIDTH : 50, card1의 WIDTH 값을 변경했으나 card2의 WIDTH 값도 변경됨
+		System.out.println("card2.WIDTH : " + card2.WIDTH);	//card2.WIDTH : 50, card1의 WIDTH 값을 변경했으나 card2의 WIDTH 값도 변경됨
 		System.out.println("card2.HEIGHT : " + card2.HEIGHT);	//card2.HEIGHT : 100, card1의 HEIGHT 값을 변경했으나 card2의 HEIGHT 값도 변경됨
 	}
 }
@@ -346,11 +345,11 @@ class Card
 {
 	//개별속성
 	String kind;	//무늬
-	int number;		//숫자
+	int number;	//숫자
 	
 	//공통속성
-	static int WIDTH = 100;		//폭
-	static int HEIGHT = 250;	//높이
+	static int WIDTH = 100;	 //폭
+	static int HEIGHT = 250; //높이
 }
 ```
 

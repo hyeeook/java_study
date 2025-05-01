@@ -486,11 +486,86 @@ class Data
 ---
 
 ## 클래스 메서드와 인스턴스 메서드
-- 변수와 동일하게 메서드 앞에 static이 붙어 있으면 클래스 메서드, 붙어 있지 않으면 인스턴스 메서드.
-- 또한 변수와 마찬가지로 클래스 메서드는 객체를 생성하지 않고도 호출 가능, 인스턴스 메서드는 반드시 객체를 생성한 후에 호출 가능.
+- 메서드 앞에 static이 붙어 있으면 클래스 메서드, 붙어 있지 않으면 인스턴스 메서드(변수와 동일).
+- 클래스 메서드는 객체를 생성하지 않고도 호출 가능, 인스턴스 메서드는 반드시 객체를 생성한 후에 호출 가능(변수와 동일).
 - 클래스는 '데이터(변수)와 데이터에 관련된 메서드의 집합'이므로, 같은 클래스 내에 있는 메서드와 멤버변수는 아주 밀접한 관계가 있음.
 - 인스턴스 메서드는 인스턴스 변수와 관련된 작업을 하는, 즉 메서드의 작업을 수행하는데 인스턴스 변수를 필요로 하는 메서드. 그런데 인스턴스 변수는 인스턴스(객체)를 생성해야만 만들어지므로 인스턴스 메서드 역시 인스턴스를 생성해야만 호출할 수 있음.
 - 반면에 메서드 중에서 인스턴스와 관계없는(인스턴스 변수나 인스턴스 메서드를 사용하지 않는) 메서드를 클래스 메서드로 정의함.
 - 클래스를 정의할 때, 클래스 메서드와 인스턴스 메서드의 구분 기준?
   - 메서드의 작업을 수행하는데 인스턴스 변수가 필요하면 인스턴스 메서드로 선언.
   - 메서드의 작업을 수행하는데 인스턴스와 관계 없으면(인스턴스 변수나 인스턴스 메서드를 사용하지 않는) 클래스 메서드로 선언.
+
+```java
+class MyMath
+{
+	long a, b;
+	
+	//인스턴스 메서드 - a, b는 인스턴스 변수
+	long add()
+	{
+		return this.a + this.b;
+	}
+	
+	long subtract()
+	{
+		return this.a - this.b;
+	}
+	
+	long multiply()
+	{
+		return this.a * this.b;
+	}
+	
+	double divide()
+	{
+		return this.a / this.b;
+	}
+	
+	//-----------------------------------
+	
+	//클래스 메서드 - a, b는 지역변수
+	static long add(long a, long b)
+	{
+		return a + b;
+	}
+	
+	static long subtract(long a, long b)
+	{
+		return a - b;
+	}
+	
+	static long multiply(long a, long b)
+	{
+		return a * b;
+	}
+	
+	static double divide(long a, long b)
+	{
+		return a / b;
+	}
+}
+
+public class StaticAndInstanceMethod
+{
+	public static void main(String[] args)
+	{
+		//인스턴스 생성 없이 클래스 메서드 호출
+		System.out.println(MyMath.add(200L, 100L));		//300
+		System.out.println(MyMath.subtract(200L, 100L));	//100
+		System.out.println(MyMath.multiply(200L, 100L));	//20000
+		System.out.println(MyMath.divide(200L, 100L));		//2.0
+		
+		System.out.println();
+		
+		MyMath myMath = new MyMath();
+		myMath.a = 200L;
+		myMath.b = 100L;
+		
+		//인스턴스 생성 후 인스턴스 메서드 호출
+		System.out.println(myMath.add());	//300
+		System.out.println(myMath.subtract());	//100
+		System.out.println(myMath.multiply());	//20000
+		System.out.println(myMath.divide());	//2.0
+	}
+}
+```

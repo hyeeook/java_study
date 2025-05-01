@@ -587,3 +587,39 @@ public class StaticAndInstanceMethod
 	}
 }
 ```
+
+---
+
+## 메서드 간의 호출과 참조
+- 같은 클래스에 속한 멤버들 간에는 별도의 인스턴스를 생성하지 않고도 서로 참조 또는 호출이 가능.
+- 단, 클래스 멤버가 인스턴스 멤버를 참조 또는 호출하고자 하는 경우에는 인스턴스를 생성하야 함.
+  - 인스턴스 멤버가 존재하는 시점에 클래스 멤버는 항상 존재하지만, 클래스 멤버가 존재하는 시점에 인스턴스 멤버가 존재하지 않을 수도 있기 때문.
+
+```java
+public class MethodCallAndReference
+{
+	int iv;
+	static int cv;
+	
+	void instanceMethod1() {}		//인스턴스 메서드
+	static void classMethod1() {}	//클래스 메서드
+	
+	void instanceMethod2()			//인스턴스 메서드
+	{
+		instanceMethod1();			//인스턴스 메서드 호출 - 정상
+		classMethod1();				//클래스 메서드 호출 - 정상
+		
+		System.out.println(iv);		//인스턴스 변수 사용 - 정상
+		System.out.println(cv);		//클래스 변수 사용 - 정상
+	}
+	
+	static void classMethod2()		//클래스 메서드
+	{
+		instanceMethod1();			//인스턴스 메서드 호출 - 오류, 클래스 메서드에서는 인스턴스 메서드 호출 불가
+		classMethod1();				//클래스 메서드 호출 - 정상
+		
+		System.out.println(iv);		//인스턴스 변수 사용 - 오류, 클래스 메서드에서는 인스턴스 변수 사용 불가
+		System.out.println(cv);		//클래스 변수 사용 - 정상
+	}
+}
+```

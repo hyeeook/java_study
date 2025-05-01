@@ -599,28 +599,28 @@ public class StaticAndInstanceMethod
 ```java
 public class MethodCallAndReference
 {
-	int iv;
-	static int cv;
+	int iv;				//인스턴스 변수
+	static int cv;			//클래스 변수
 	
-	void instanceMethod1() {}		//인스턴스 메서드
+	void instanceMethod1() {}	//인스턴스 메서드
 	static void classMethod1() {}	//클래스 메서드
 	
-	void instanceMethod2()			//인스턴스 메서드
+	void instanceMethod2()		//인스턴스 메서드
 	{
-		instanceMethod1();			//인스턴스 메서드 호출 - 정상
-		classMethod1();				//클래스 메서드 호출 - 정상
+		instanceMethod1();	//인스턴스 메서드 호출 - 정상
+		classMethod1();		//클래스 메서드 호출 - 정상
 		
-		System.out.println(iv);		//인스턴스 변수 사용 - 정상
-		System.out.println(cv);		//클래스 변수 사용 - 정상
+		System.out.println(iv);	//인스턴스 변수 사용 - 정상
+		System.out.println(cv);	//클래스 변수 사용 - 정상
 	}
 	
-	static void classMethod2()		//클래스 메서드
+	static void classMethod2()	//클래스 메서드
 	{
-		instanceMethod1();			//인스턴스 메서드 호출 - 오류, 클래스 메서드에서는 인스턴스 메서드 호출 불가
-		classMethod1();				//클래스 메서드 호출 - 정상
+		instanceMethod1();	//인스턴스 메서드 호출 - 오류, 클래스 메서드에서는 인스턴스 메서드 호출 불가
+		classMethod1();		//클래스 메서드 호출 - 정상
 		
-		System.out.println(iv);		//인스턴스 변수 사용 - 오류, 클래스 메서드에서는 인스턴스 변수 사용 불가
-		System.out.println(cv);		//클래스 변수 사용 - 정상
+		System.out.println(iv);	//인스턴스 변수 사용 - 오류, 클래스 메서드에서는 인스턴스 변수 사용 불가
+		System.out.println(cv);	//클래스 변수 사용 - 정상
 	}
 }
 ```
@@ -637,3 +637,25 @@ public class MethodCallAndReference
   3) 반환 타입은 관계 없음.
 - 비록 메서드의 이름이 같더라도 매개변수가 다르면 서로 구별될 수 있기 때문에 오버로딩이 가능한 것.
 - 'System.out.println()'이 오버로딩의 대표적인 예.
+
+<오버로딩의 잘못된 예1>
+```java
+int add(int a, int b) {return a + b;}
+int add(int x, int y) {return x + y;}
+```
+
+<오버로딩의 잘못된 예2>
+```java
+int add(int a, int b) {return a + b;}
+long add(int a, int b) {return (long)(a + b);}
+```
+
+<오버로딩의 올바른 예>
+```java
+long add(int a, long b) {return a + b;}
+long add(long a, int b) {return a + b;}
+```
+
+<오버로딩의 올바른 예>에서와 같이 단지 매개변수의 순서만 다르게 하여 오버로딩을 구현하면, 사용자가 매개변수의 순서를 외우지 않아도 된다는 장점이 있으나, 오히려 단점이 될 수 있음.
+- `add(3, 3L)`과 같이 메서드를 호출하면 첫 번째 메서드가, `add(3L, 3)`과 같이 메서드를 호출하면 두 번째 메서드가 호출됨.
+- 그러나 `add(3, 3)`과 같이 메서드를 호출하면 두 메서드 중에서 어느 메서드가 호출된 것인지 알 수 없기 때문에 메서드를 호출하는 곳에서 컴파일 에러가 발생.

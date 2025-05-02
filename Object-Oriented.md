@@ -711,11 +711,38 @@ class Point
 - 클래스의 '접근 제어자(Access Modifier)'가 'public'인 경우, 기본 생성자로 `public 클래스이름() {}`이 추가됨.
 
 ```java
-class Data
+public class DefaultConstructor
 {
-	Date()	//기본 생성자
+	public static void main(String[] args)
+	{
+		Data1 d1 = new Data1();
+		Data2 d2 = new Data2();
+		Data3 d3 = new Data3();	//compile error 발생, 이미 개발자가 선언한 다른 생성자가 있기 때문에 컴파일러가 자동으로 기본 생성자를 추가하지 않음
+	}
+}
+
+class Data1
+{
+	int value;
+}
+
+class Data2
+{
+	int value;
+	
+	Data2()		//기본 생성자
 	{
 	
+	}
+}
+
+class Data3
+{
+	int value;
+	
+	Data3(int x)	//개발자가 직접 추가한 매개변수가 있는 생성자
+	{
+		this.value = x;
 	}
 }
 ```

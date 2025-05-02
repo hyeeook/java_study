@@ -762,22 +762,28 @@ public class ConstructorWithParameter
 	public static void main(String[] args)
 	{
 		Car car1 = new Car();
-		Car car2 = new Car("green", "manual", 4);
+		Car car2 = new Car();				//인스턴스 생성 후 각 필드에 접근하여 초기화
+		Car car3 = new Car("green", "manual", 4);	//생성자로 인스턴스 초기화
 		
-		System.out.println(car1.toString());	//Car [color=null, gearType=null, door=0]
-		System.out.println(car2.toString());	//Car [color=green, gearType=manual, door=4]
+		car2.color = "red";
+		car2.gearType = "auto";
+		car2.door = 2;
+		
+		System.out.println(car1.toString());		//Car [color=null, gearType=null, door=0]
+		System.out.println(car2.toString());		//Car [color=red, gearType=auto, door=2]
+		System.out.println(car3.toString());		//Car [color=green, gearType=manual, door=4]
 	}
 }
 
 class Car
 {
-	String color;		//자동차 색상
-	String gearType;	//변속기 종류 - auto(자동), manual(수동)
-	int door;			//문의 개수
+	String color;						//자동차 색상
+	String gearType;					//변속기 종류 - auto(자동), manual(수동)
+	int door;						//문의 개수
 	
-	Car() {}	//기본 생성자
+	Car() {}						//기본 생성자
 	
-	Car(String color, String gearType, int door)	//생성자
+	Car(String color, String gearType, int door)		//생성자
 	{
 		this.color = color;
 		this.gearType = gearType;

@@ -969,23 +969,24 @@ class Car
 ```java
 public class InitBlock
 {
-	//클래스 초기화 블럭
+	//(1) 클래스 초기화 블럭
 	static
 	{
 		System.out.println("클래스 초기화 블럭");
 	}
 	
-	//인스턴스 초기화 블럭
+	//(3) 인스턴스 초기화 블럭
 	{
 		System.out.println("인스턴스 초기화 블럭");
 	}
 	
-	//생성자
+	//(4) 생성자
 	InitBlock()
 	{
 		System.out.println("생성자");
 	}
-	
+
+	//(2) main() 메서드
 	public static void main(String[] args)
 	{
 		System.out.println("InitBlock initBlock1 = new InitBlock();");
@@ -1006,3 +1007,41 @@ public class InitBlock
 //생성자
 ```
 
+- 배열이나 예외처리가 필요한 초기화에서는 명시적 초기화만으로는 복잡한 초기화 작업을 할 수 없으므로 추가적으로 클래스 초기화 블럭을 사용하도록 함.
+
+```java
+public class InitBlock
+{
+	//(1) 명시적 초기화
+	static int[] intArray = new int[10];
+	
+	//(2) 클래스 초기화 블럭
+	static
+	{
+		for(int i=0; i<intArray.length; i++)
+		{
+			intArray[i] = (int)(Math.random()*10) + 1;
+		}
+	}
+	
+	public static void main(String[] args)
+	{
+		for(int i=0; i<intArray.length; i++)
+		{
+			System.out.println("intArray[" + i + "] : " + intArray[i]);
+		}
+	}
+}
+
+//<실행 결과>
+//intArray[0] : 8
+//intArray[1] : 10
+//intArray[2] : 6
+//intArray[3] : 5
+//intArray[4] : 1
+//intArray[5] : 2
+//intArray[6] : 2
+//intArray[7] : 8
+//intArray[8] : 6
+//intArray[9] : 7
+```

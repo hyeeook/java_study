@@ -752,3 +752,41 @@ class Data3
 	}
 }
 ```
+
+---
+
+## 매개변수가 있는 생성자
+```java
+public class ConstructorWithParameter
+{
+	public static void main(String[] args)
+	{
+		Car car1 = new Car();
+		Car car2 = new Car("green", "manual", 4);
+		
+		System.out.println(car1.toString());	//Car [color=null, gearType=null, door=0]
+		System.out.println(car2.toString());	//Car [color=green, gearType=manual, door=4]
+	}
+}
+
+class Car
+{
+	String color;		//자동차 색상
+	String gearType;	//변속기 종류 - auto(자동), manual(수동)
+	int door;			//문의 개수
+	
+	Car() {}	//기본 생성자
+	
+	Car(String color, String gearType, int door)	//생성자
+	{
+		this.color = color;
+		this.gearType = gearType;
+		this.door = door;
+	}
+	
+	@Override
+	public String toString() {
+		return "Car [color=" + color + ", gearType=" + gearType + ", door=" + door + "]";
+	}
+}
+```

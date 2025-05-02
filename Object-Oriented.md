@@ -856,3 +856,47 @@ class Car
 	}
 }
 ```
+
+---
+
+## 객체 자신을 가리키는 참조변수 - this
+<예제(1)>
+```java
+Car(String c, String g, int d)
+{
+	color = c;	//color : iv(인스턴스 변수), c : lv(지역 변수)
+	gearType = g;	//gearType : iv(인스턴스 변수), g : lv(지역 변수)
+	door = d;	//door : iv(인스턴스 변수), d : lv(지역 변수)
+}
+```
+
+<예제(2)>
+```java
+Car(String color, String gearType, int door)
+{
+	this.color = color;
+	this.gearType = gearType;
+	this.door = door;
+}
+```
+
+<예제(3)>
+```java
+Car(String color, String gearType, int door)
+{
+	color = color;
+	gearType = gearType;
+	door = door;
+}
+```
+
+- <예제(1)>에서는 인스턴스 변수와 지역 변수가 이름만으로도 구별이 가능함.
+- <예제(2)>에서는 인스턴스 변수와 지역 변수가 이름만으로는 구별이 불가함.
+- <예제(2)>와 같이 인스턴스 변수와 지역 변수의 이름이 같은 경우, 인스턴스 변수 앞에 'this'를 붙이면 됨.
+- 'this'가 붙은 변수는 인스턴스 변수이고, 'this'가 붙지 않은 변수는 지역 변수로 구분됨.
+- 만일 <예제(3)>과 같이 이름으로 구별이 되지 않음에도 'this'를 붙이지 않으면 둘다 지역 변수로 간주됨.
+- 'this'는 참조변수로 인스턴스 자신을 가리킴.
+- 참조변수를 통해 인스턴스의 멤버에 접근할 수 있는 것처럼 'this'로 인스턴스 변수에 접근할 수 있는 것.
+- 그러나 'this'를 사용할 수 있는 것은 인스턴스 멤버만 가능하고, static이 붙은 클래스 메서드에서는 불가(클래스 메서드는 인스턴스 생성 없이 호출이 가능하므로 클래스 메서드가 호출된 시점에 인스턴스가 존재하지 않을 수도 있기 때문).
+- 사실 생성자를 포함한 모든 인스턴스 메서드에는 자신이 관련된 인스턴스를 가리키는 참조변수 'this'가 지역 변수로 숨겨진 채 존재하고 이 'this'는 인스턴스의 주소가 저장되어 있음.
+- 'this'와 'this()'는 비슷하게 생겼을 뿐, 완전히 다른 것으로 'this'는 '참조 변수'이고 'this()'는 '생성자'를 뜻함.

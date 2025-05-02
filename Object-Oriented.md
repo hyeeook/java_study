@@ -810,23 +810,37 @@ class Car
      > 생성자 내에서 초기화 작업 도중에 다른 생성자를 호출하게 되면, 호출된 다른 생성자 내에서도 멤버변수들의 값을 초기화할 것이므로 다른 생성자를 호출하기 이전의 초기화 작업이 무의미해 질 수 있음.
 
 ```java
+public class ConstructorThis
+{
+	public static void main(String[] args)
+	{
+		Car car1 = new Car();
+		Car car2 = new Car("blue");
+		Car car3 = new Car("green", "manual", 4);
+		
+		System.out.println(car1.toString());		//Car [color=white, gearType=auto, door=4]
+		System.out.println(car2.toString());		//Car [color=blue, gearType=auto, door=4]
+		System.out.println(car3.toString());		//Car [color=green, gearType=manual, door=4]
+	}
+}
+
 class Car
 {
-	String color;					//자동차 색상
-	String gearType;				//변속기 종류 - auto(자동), manual(수동)
-	int door;					//문의 개수
+	String color;						//자동차 색상
+	String gearType;					//변속기 종류 - auto(자동), manual(수동)
+	int door;						//문의 개수
 	
-	Car()						//기본 생성자
+	Car()							//기본 생성자
 	{
-		this("white", "auto", 4);
+		this("white", "auto", 4);			//Car(String color, String gearType, int door) 생성자 호출
 	}
 	
-	Car(String color)				//매개변수가 있는 생성자
+	Car(String color)					//매개변수가 있는 생성자
 	{
-		this(color, "auto", 4);
+		this(color, "auto", 4);				//Car(String color, String gearType, int door) 생성자 호출
 	}
 	
-	Car(String color, String gearType, int door)	//매개변수가 있는 생성자
+	Car(String color, String gearType, int door)		//매개변수가 있는 생성자
 	{
 		this.color = color;
 		this.gearType = gearType;

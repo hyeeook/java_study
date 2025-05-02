@@ -756,6 +756,9 @@ class Data3
 ---
 
 ## 매개변수가 있는 생성자
+- 생성자도 메서드처럼 매개변수를 선언하여 호출 시에 값을 넘겨받아서 인스턴스의 초기화 작업에 사용할 수 있음.
+- 매개변수가 있는 생성자를 사용하는 경우, 인스턴스를 생성하는 동시에 원하는 값으로 초기화 가능.
+
 ```java
 public class ConstructorWithParameter
 {
@@ -783,7 +786,47 @@ class Car
 	
 	Car() {}						//기본 생성자
 	
-	Car(String color, String gearType, int door)		//생성자
+	Car(String color, String gearType, int door)		//매개변수가 있는 생성자
+	{
+		this.color = color;
+		this.gearType = gearType;
+		this.door = door;
+	}
+	
+	@Override
+	public String toString() {
+		return "Car [color=" + color + ", gearType=" + gearType + ", door=" + door + "]";
+	}
+}
+```
+
+---
+
+## 생성자에서 다른 생성자 호출하기 - this()
+- 같은 클래스의 멤버들 간에 서로 호출할 수 있는 것처럼 생성자 간에도 서로 호출이 가능함.
+- 생성자에서 다른 생성자를 호출하기 위한 조건
+  1) 생성자의 이름으로 클래스 이름 대신 'this'를 사용.
+  2) 한 생성자에서 다른 생성자를 호출할 때는 반드시 첫 줄에서만 호출이 가능.
+     > 생성자 내에서 초기화 작업 도중에 다른 생성자를 호출하게 되면, 호출된 다른 생성자 내에서도 멤버변수들의 값을 초기화할 것이므로 다른 생성자를 호출하기 이전의 초기화 작업이 무의미해 질 수 있음.
+
+```java
+class Car
+{
+	String color;					//자동차 색상
+	String gearType;				//변속기 종류 - auto(자동), manual(수동)
+	int door;					//문의 개수
+	
+	Car()						//기본 생성자
+	{
+		this("white", "auto", 4);
+	}
+	
+	Car(String color)				//매개변수가 있는 생성자
+	{
+		this(color, "auto", 4);
+	}
+	
+	Car(String color, String gearType, int door)	//매개변수가 있는 생성자
 	{
 		this.color = color;
 		this.gearType = gearType;

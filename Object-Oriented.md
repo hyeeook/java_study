@@ -909,6 +909,7 @@ Car(String color, String gearType, int door)
 - 클래스 변수와 인스턴스 변수 그리고 배열은 초기화를 하지 않아도 자동으로 변수의 자료형에 맞는 기본값으로 초기화가 이루어지므로 초기화 작업 없이 사용해도 됨
 - 지역변수는 사용하기 전에 반드시 초기화 해야 함.
 
+<자료형별 기본값>
 자료형|기본값
 ---|---
 boolean|false
@@ -934,3 +935,74 @@ public class InitVariable
 	}
 }
 ```
+
+---
+
+## 멤버변수의 초기화
+- 지역변수와 달리 멤버변수는 각 타입의 기본값으로 자동 초기화됨.
+- 멤버변수의 초기화 순서
+  1. 클래스 변수의 자동 초기화
+  2. 클래스 변수의 명시적 초기화(간단)
+  3. 클래스 변수의 초기화 블럭, 생성자(복잡)
+  4. 인스턴스 변수의 자동 초기화
+  5. 인스턴스 변수의 명시적 초기화(간단)
+  6. 인스턴스 변수의 초기화 블럭, 생성자(복잡)
+
+### 명시적 초기화(explicit initialization)
+- 변수를 선언과 동시에 초기화하는 것.
+- 가장 기본적이면서도 간단한 초기화 방법이므로 여러 초기화 방법 중에서 가장 우선적으로 고려.
+- 보다 복잡한 초기화 작업이 필요하면 '초기화 블럭' 또는 '생성자'를 사용해야 함.
+
+```java
+class Car
+{
+	int door = 4;			//기본형(primitive type) 변수의 초기화
+	Engine engine = new Engine();	//참조형(reference type) 변수의 초기화
+}
+```
+
+### 초기화 블럭(initialization block)
+- 보다 복잡한 초기화 작업이 필요할 때 사용.
+- 클래스 초기화 블럭 : 클래스 변수의 복잡한 초기화에 사용.
+- 인스턴스 초기화 블럭 : 인스턴스 변수의 복잡한 초기화에 사용.
+
+```java
+public class InitBlock
+{
+	//클래스 초기화 블럭
+	static
+	{
+		System.out.println("클래스 초기화 블럭");
+	}
+	
+	//인스턴스 초기화 블럭
+	{
+		System.out.println("인스턴스 초기화 블럭");
+	}
+	
+	//생성자
+	InitBlock()
+	{
+		System.out.println("생성자");
+	}
+	
+	public static void main(String[] args)
+	{
+		System.out.println("InitBlock initBlock1 = new InitBlock();");
+		InitBlock initBlock1 = new InitBlock();
+		
+		System.out.println("InitBlock initBlock2 = new InitBlock();");
+		InitBlock initBlock2 = new InitBlock(); 
+	}
+}
+
+//<실행 결과>
+//클래스 초기화 블럭
+//InitBlock initBlock1 = new InitBlock();
+//인스턴스 초기화 블럭
+//생성자
+//InitBlock initBlock2 = new InitBlock();
+//인스턴스 초기화 블럭
+//생성자
+```
+

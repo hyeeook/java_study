@@ -1047,3 +1047,79 @@ public class InitBlock
 //intArray[8] : 6
 //intArray[9] : 7
 ```
+
+---
+
+## 상속
+- 기존 클래스를 재사용하여 새로운 클래스를 작성하는 것.
+- 보다 적은 양의 코드로 새로운 클래스를 작성할 수 있음.
+- 코드를 공통적으로 관리할 수 있으므로 코드의 추가 및 변경이 매우 용이.
+- 상속을 해주는 클래스를 '조상 클래스'라고 하고, 상속을 받는 클래스를 '자손 클래스'라고 함.
+- 조상 클래스에 멤버(변수 및 메서드)를 추가하면 자손 클래스에도 자동으로 해당 멤버가 추가됨.
+- 자손 클래스에 멤버(변수 및 메서드)를 추가해도 조상 클래스에는 아무런 영향을 미치지 못함.
+- 자손 클래스는 조상 클래스의 모든 멤버를 상속 받으므로 자손 클래스는 조상 클래스의 멤버들을 포함한다고 할 수 있음.
+- 자손 클래스는 항상 조상 클래스보다 같거나 많은 멤버를 갖음.
+- 생성자와 초기화 블럭은 상속되지 않음.
+
+```java
+public class Inheritance
+{
+	public static void main(String[] args)
+	{
+		Tv tv = new Tv();						//조상 인스턴스 생성
+		tv.channel = 5;
+		tv.channelDown();
+		System.out.println("tv의 채널 : " + tv.channel);		//tv의 채널 : 4
+		tv.displayCaption("Hello, World.");				//오류, 자손 클래스에 선언된 메서드는 조상 클래스에 아무런 영향을 주지 못함
+		
+		SmartTv smartTv = new SmartTv();				//자손 인스턴스 생성
+		smartTv.channel = 10;						//조상 클래스로부터 상속 받은 멤버
+		smartTv.channelUp();						//조상 클래스로부터 상속 받은 멤버
+		System.out.println("smartTv의 채널 : " + smartTv.channel);	//smartTv의 채널 : 11
+		
+		smartTv.displayCaption("자막 기능 off - Hello, World.");	//자막 기능 off라서 자막 미출력
+		smartTv.caption();						//자막 기능 on
+		smartTv.displayCaption("자막 기능 on - Hello, World.");		//자막 기능 on - Hello, World.
+	}
+}
+
+class Tv
+{
+	boolean power;	//전원상태(on/off)
+	int channel;	//채널
+	
+	void power()
+	{
+		this.power = !this.power;
+	}
+	
+	void channelUp()
+	{
+		++this.channel;
+	}
+	
+	void channelDown()
+	{
+		--this.channel;
+	}
+}
+
+class SmartTv extends Tv
+{
+	//자손 클래스인 SmartTv에 자막 기능 추가
+	boolean caption;		//자막상태(on/off)
+	
+	void caption()
+	{
+		this.caption = !this.caption;
+	}
+	
+	void displayCaption(String text)
+	{
+		if(this.caption)	//자막 기능이 on 상태인 경우에만 text 출력
+		{
+			System.out.println(text);
+		}
+	}
+}
+```

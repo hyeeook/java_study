@@ -1123,3 +1123,7 @@ class SmartTv extends Tv
 	}
 }
 ```
+
+---
+
+## 클래스 간의 관계 - 포함관계

@@ -1166,8 +1166,8 @@ class Point
 ## 클래스 간의 관계 결정하기
 구분|내용|예시
 ---|---|---
-상속관계|~은 ~이다(is-a)|SportsCar - Car(SportsCar is a Car)
-포함관계|~은 ~을 가지고 있다(has-a)|Circle - Point(Circle has a Point)
+상속관계|~은 ~이다(is-a)|SportsCar - Car
+포함관계|~은 ~을 가지고 있다(has-a)|Circle - Point
 
 ---
 

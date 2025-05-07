@@ -1126,4 +1126,41 @@ class SmartTv extends Tv
 
 ---
 
-## 클래스 간의 관계 - 포함관계
+## 클래스 간의 관계 - 포함(composite)관계
+- 상속 이외에 클래스를 재사용하는 방법.
+- 한 클래스의 멤버변수로 다른 클래스 타입의 참조변수를 선언하는 것.
+
+<포함관계 적용 이전>
+```java
+class Circle
+{
+	int x;	//x좌표
+	int y;	//y좌표
+	int r;	//반지름
+}
+
+class Point
+{
+	int x;	//x좌표
+	int y;	//y좌표
+}
+```
+
+<포함관계 적용 이후>
+```java
+class Circle
+{
+	Point point = new Point();
+	int r;	//반지름
+}
+
+class Point
+{
+	int x;	//x좌표
+	int y;	//y좌표
+}
+```
+
+---
+
+## 클래스 간의 관계 결정하기

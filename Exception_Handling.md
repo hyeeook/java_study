@@ -19,26 +19,26 @@
     - 시스템적인 문제.
     - JVM에서 발생.
 
-<상속계층도>
-java.lang.Throwable
-│
-├── java.lang.Exception(예외 - 해결 가능)
-│   ├── java.io.IOException(Checked Exception)
-│   ├── java.sql.SQLException(Checked Exception)
-│   ├── java.lang.InterruptedException(Checked Exception)
-│   ├── java.lang.ReflectiveOperationException(Checked Exception)
-│   ├── javax.naming.NamingException(Checked Exception)
-│   ├── java.lang.RuntimeException(Unchecked Exception)
-│   │   ├── java.lang.NullPointerException
-│   │   ├── java.lang.ArrayIndexOutOfBoundsException
-│   │   ├── java.lang.IllegalArgumentException
-│   │   ├── java.lang.ClassCastException
-│   │   ├── java.lang.ArithmeticException
-│   │   ├── java.util.NoSuchElementException
-│
-├── java.lang.Error(오류 - 해결 불가능)
-│   ├── java.lang.OutOfMemoryError(Unchecked Exception)
-│   ├── java.lang.StackOverflowError(Unchecked Exception)
-│   ├── java.lang.VirtualMachineError(Unchecked Exception)
-│   ├── java.lang.ThreadDeath(Unchecked Exception)
-│   ├── java.lang.AssertionError(Unchecked Exception)
+<상속계층도> <br>
+java.lang.Throwable <br>
+│ <br>
+├── java.lang.Exception(예외 - 해결 가능) <br>
+│   ├── java.io.IOException(Checked Exception) <br>
+│   ├── java.sql.SQLException(Checked Exception) <br>
+│   ├── java.lang.InterruptedException(Checked Exception) <br>
+│   ├── java.lang.ReflectiveOperationException(Checked Exception) <br>
+│   ├── javax.naming.NamingException(Checked Exception) <br>
+│   ├── java.lang.RuntimeException(Unchecked Exception) <br>
+│   │   ├── java.lang.NullPointerException <br>
+│   │   ├── java.lang.ArrayIndexOutOfBoundsException <br>
+│   │   ├── java.lang.IllegalArgumentException <br>
+│   │   ├── java.lang.ClassCastException <br>
+│   │   ├── java.lang.ArithmeticException <br>
+│   │   ├── java.util.NoSuchElementException <br>
+│ <br>
+├── java.lang.Error(오류 - 해결 불가능) <br>
+│   ├── java.lang.OutOfMemoryError(Unchecked Exception) <br>
+│   ├── java.lang.StackOverflowError(Unchecked Exception) <br>
+│   ├── java.lang.VirtualMachineError(Unchecked Exception) <br>
+│   ├── java.lang.ThreadDeath(Unchecked Exception) <br>
+│   ├── java.lang.AssertionError(Unchecked Exception) <br>
